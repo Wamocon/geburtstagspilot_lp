@@ -1,0 +1,6 @@
+Files available in _source_assets/ — use these for logo and favicon:
+ASSETS_LIST.txt
+app-icon-light.svg
+favicon.ico
+favicon.svg
+made-in-germany-sign.svg

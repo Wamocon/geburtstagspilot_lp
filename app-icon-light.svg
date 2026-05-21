@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Geburtstagspilot App Icon">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f0ff"/>
+      <stop offset="100%" stop-color="#ede4ff"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="55%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  <!-- Cake base -->
+  <rect x="100" y="300" width="312" height="130" rx="22" fill="url(#purpleGrad)"/>
+  <!-- Cake top layer -->
+  <rect x="140" y="210" width="232" height="100" rx="16" fill="url(#purpleGrad)" opacity="0.82"/>
+  <!-- Frosting on base -->
+  <ellipse cx="256" cy="300" rx="156" ry="22" fill="#A78BFA"/>
+  <!-- Frosting on top -->
+  <ellipse cx="256" cy="210" rx="116" ry="16" fill="#A78BFA"/>
+  <!-- Candle 1 -->
+  <rect x="206" y="148" width="22" height="68" rx="9" fill="url(#yellowGrad)"/>
+  <!-- Candle 2 -->
+  <rect x="286" y="134" width="22" height="82" rx="9" fill="url(#yellowGrad)"/>
+  <!-- Flame 1 -->
+  <ellipse cx="217" cy="140" rx="11" ry="17" fill="#FBBF24"/>
+  <ellipse cx="217" cy="134" rx="6" ry="10" fill="#FDE68A"/>
+  <!-- Flame 2 -->
+  <ellipse cx="297" cy="126" rx="11" ry="17" fill="#FBBF24"/>
+  <ellipse cx="297" cy="120" rx="6" ry="10" fill="#FDE68A"/>
+  <!-- Dots on cake base -->
+  <circle cx="172" cy="365" r="12" fill="#FBBF24" opacity="0.9"/>
+  <circle cx="224" cy="350" r="12" fill="#FDE68A" opacity="0.9"/>
+  <circle cx="276" cy="365" r="12" fill="#FBBF24" opacity="0.9"/>
+  <circle cx="328" cy="350" r="12" fill="#FDE68A" opacity="0.9"/>
+  <!-- Stars / sparkles -->
+  <circle cx="128" cy="130" r="12" fill="#FBBF24" opacity="0.6"/>
+  <circle cx="386" cy="108" r="8" fill="#7C3AED" opacity="0.45"/>
+  <circle cx="400" cy="185" r="6" fill="#FBBF24" opacity="0.55"/>
+  <circle cx="110" cy="215" r="7" fill="#8B5CF6" opacity="0.45"/>
+</svg>

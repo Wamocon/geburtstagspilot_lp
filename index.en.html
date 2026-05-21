@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geburtstagspilot – Kids' Birthday Planner in 5 Minutes</title>
+  <meta name="description" content="Plan your child's birthday party in 5 minutes – free, without login. Geburtstagspilot generates a complete plan with schedule, games, shopping list and invitation.">
+  <meta name="keywords" content="kids birthday planner, birthday party organizer, children birthday planning app, free party planner, birthday schedule generator">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="WAMOCON GmbH">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="app-icon-light.svg">
+  <link rel="canonical" href="https://kinderpartyplaner.vercel.app/en">
+
+  <meta property="og:title" content="Geburtstagspilot – Your Complete Kids' Birthday in 5 Minutes">
+  <meta property="og:description" content="Free, no login: generate a complete birthday plan with schedule, games, shopping list and invitation in under 5 minutes.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="app-icon-light.svg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Geburtstagspilot">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Geburtstagspilot – Kids' Birthday Planner">
+  <meta name="twitter:description" content="No account, no stress: create a complete birthday party plan in minutes with games, food, shopping list and invitation.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Geburtstagspilot",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Web",
+    "description": "Kids birthday planner that generates a complete party plan in minutes: schedule, games, food, shopping list, and invitation – free, no login required.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Free to use"},
+    "author": {"@type": "Organization", "name": "WAMOCON GmbH"}
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Do I need to create an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. Core features work without login."}},
+      {"@type": "Question", "name": "Which age groups are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Children aged 3 to 12. The wizard adapts games and schedule to the exact age."}},
+      {"@type": "Question", "name": "Can I share my party plan?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, via a public share link or by exporting as a PDF and sending via WhatsApp."}},
+      {"@type": "Question", "name": "Is there a paid Pro version?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Free: 3 saved plans. Pro: unlimited plans plus AI features (chat assistant, game generator, invitation texts)."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --color-bg: #f5f5f7;
+      --color-bg-alt: #eeeef0;
+      --color-surface: #ffffff;
+      --color-border: rgba(0,0,0,.08);
+      --color-border-hover: rgba(0,0,0,.14);
+      --color-border-accent: rgba(124,58,237,.18);
+      --color-accent: #7C3AED;
+      --color-accent-dim: #6D28D9;
+      --color-accent-soft: rgba(124,58,237,.06);
+      --color-text-main: #111113;
+      --color-muted: #555558;
+      --color-faint: #8e8e93;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text-main); }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased leading-relaxed">
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+  </div>
+
+  <div class="fixed top-0 left-0 right-0 z-[60] overflow-hidden" style="height:48px;background:#0a0a0c;border-bottom:1px solid rgba(124,58,237,.25);">
+    <div style="display:flex;align-items:center;height:100%;white-space:nowrap;animation:ticker-scroll 18s linear infinite;">
+      <span class="ticker-item">GEBURTSTAGSPILOT &mdash; Free. No login. Made in Germany.</span>
+      <span class="ticker-item">GEBURTSTAGSPILOT &mdash; Free. No login. Made in Germany.</span>
+      <span class="ticker-item">GEBURTSTAGSPILOT &mdash; Free. No login. Made in Germany.</span>
+      <span class="ticker-item">GEBURTSTAGSPILOT &mdash; Free. No login. Made in Germany.</span>
+    </div>
+  </div>
+
+  <nav class="fixed top-[48px] left-0 right-0 z-50 h-16 flex items-center transition-all duration-400" id="nav">
+    <div class="w-full max-w-[1100px] mx-auto px-5 md:px-10 flex items-center justify-between">
+      <a href="#" class="hover:opacity-70 transition-opacity flex items-center gap-2" style="text-decoration:none;">
+        <img src="app-icon-light.svg" alt="Geburtstagspilot icon" style="width:28px;height:28px;">
+        <span style="font-size:1.5rem;font-weight:900;letter-spacing:-0.5px;color:#7C3AED;">Geburtstagspilot</span>
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="nav-links-pill">
+          <a href="#problem" class="nav-link" data-nav-section="problem">Problem</a>
+          <a href="#warum" class="nav-link" data-nav-section="warum">Solution</a>
+          <a href="#funktionen" class="nav-link" data-nav-section="funktionen">Features</a>
+          <a href="#process" class="nav-link" data-nav-section="process">Process</a>
+          <a href="#ablauf" class="nav-link" data-nav-section="ablauf">How it works</a>
+          <a href="#faq" class="nav-link" data-nav-section="faq">FAQ</a>
+        </div>
+        <a href="https://kinderpartyplaner.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;background:#7C3AED;color:#fff;font-size:.8rem;font-weight:700;border-radius:999px;text-decoration:none;">Open app</a>
+        <div class="flex items-center gap-2 text-sm font-semibold" style="color:var(--color-muted);background:rgba(255,255,255,0.05);padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
+          <a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">DE</a>
+          <span style="opacity:0.3">|</span>
+          <a href="index.en.html" style="color:#7C3AED;text-decoration:none;">EN</a>
+        </div>
+      </div>
+      <button class="nav-hamburger md:hidden" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" aria-hidden="true">
+    <button style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">&times;</button>
+    <div class="mm-brand">Geburtstagspilot</div>
+    <div class="mm-grid">
+      <a href="#problem" class="mm-link" onclick="closeMobileMenu()">Problem</a>
+      <a href="#warum" class="mm-link" onclick="closeMobileMenu()">Solution</a>
+      <a href="#funktionen" class="mm-link" onclick="closeMobileMenu()">Features</a>
+      <a href="#process" class="mm-link" onclick="closeMobileMenu()">Process</a>
+      <a href="#ablauf" class="mm-link" onclick="closeMobileMenu()">How it works</a>
+      <a href="#faq" class="mm-link" onclick="closeMobileMenu()">FAQ</a>
+      <a href="#final-cta" class="mm-link" onclick="closeMobileMenu()">Start</a>
+    </div>
+    <div style="margin-top:2rem;display:flex;justify-content:center;gap:1.5rem;font-size:1.2rem;font-weight:700;">
+      <a href="index.html" style="color:var(--color-muted);text-decoration:none;">DE</a>
+      <span style="color:var(--color-border);">|</span>
+      <a href="index.en.html" style="color:#7C3AED;text-decoration:none;">EN</a>
+    </div>
+  </div>
+
+  <section class="relative flex items-center justify-center overflow-hidden pt-[160px] pb-[130px]" id="hero">
+    <canvas id="heroParticles" class="absolute inset-0 z-[1]"></canvas>
+    <div class="absolute inset-0 z-0" style="background:radial-gradient(ellipse 70% 55% at 50% 40%,rgba(124,58,237,.09)0%,transparent 65%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(124,58,237,.05)0%,transparent 50%),radial-gradient(ellipse 45% 50% at 80% 25%,rgba(95,127,116,.07)0%,transparent 50%);"></div>
+    <div class="absolute inset-0 z-0 opacity-[.06]" style="background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,black 0%,transparent 70%);"></div>
+
+    <div class="relative z-10 text-center max-w-[960px] px-5">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7" style="background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.35);">
+        <img src="app-icon-light.svg" alt="Geburtstagspilot" style="width:16px;height:16px;">
+        <span style="font-size:.8rem;font-weight:700;color:#8B5CF6;letter-spacing:.06em;text-transform:uppercase;">No login. No stress. Free.</span>
+      </div>
+
+      <h1 class="reveal text-3xl md:text-7xl lg:text-8xl font-bold leading-[1.08] tracking-tight mb-6">
+        Your child's birthday.<br><span class="gradient-text">Complete in 5 minutes.</span>
+      </h1>
+      <p class="reveal text-lg md:text-xl max-w-[680px] mx-auto leading-relaxed" style="color:var(--color-muted);">
+        Geburtstagspilot creates a complete birthday party plan – schedule, games, shopping list and invitation – in under 5 minutes. Without an account, without stress.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://kinderpartyplaner.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;background:#7C3AED;color:#fff;font-size:.95rem;font-weight:700;border-radius:12px;text-decoration:none;transition:all .25s ease;box-shadow:0 4px 24px rgba(124,58,237,.3);">Start planning for free</a>
+      </div>
+
+      <p class="reveal mt-5 text-sm" style="color:#8e8e93;">Free. 80+ curated games. AI features available in Pro.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-[120px] z-20" style="background:linear-gradient(to bottom, transparent, #0f1117);"></div>
+  </section>
+
+  <section class="relative section-dark" id="problem" style="padding:6.5rem 0 5rem;margin-top:-2px;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <h2 class="reveal text-4xl md:text-6xl font-black leading-[1.05] tracking-tight mb-6" style="color:#f0f0f2;">
+        Many parents feel overwhelmed<br><span style="color:#7C3AED;">planning their child's birthday</span>
+      </h2>
+      <p class="reveal text-lg max-w-[620px] leading-relaxed mb-16" style="color:#9a9aaa;">These three figures show the real scale of the challenge: how many birthday parties happen each year, how much money parents invest, and how much time planning takes without a structured tool.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#7C3AED;" data-target="7800000" data-separator=",">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">children's birthdays per year in Germany</span>
+          <span class="block text-xs" style="color:#7a7a88;">shows how large and relevant this planning segment is</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#7C3AED;" data-target="67" data-suffix="%">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">of parents feel stressed by birthday planning</span>
+          <span class="block text-xs" style="color:#7a7a88;">proves that a structured solution creates real value</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.25);">
+          <span class="block text-xs font-semibold mb-2 uppercase tracking-[0.12em]" style="color:#8B5CF6;">typical</span>
+          <span class="block stat-value font-black leading-none mb-1 tabular-nums" style="color:#7C3AED;" data-target="150">0</span>
+          <span class="block text-sm font-semibold mb-2" style="color:#d3d3da;">– 350 EUR</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">typical birthday budget per party</span>
+          <span class="block text-xs" style="color:#7a7a88;">sets realistic expectations and helps parents prioritize</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 section-dark" id="warum" style="background:#050508;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5" style="color:#f0f0f2;">Why Geburtstagspilot</h2>
+        <p class="reveal text-lg max-w-[650px] mx-auto leading-relaxed" style="color:#9999a1;">Four clear benefits for parents who want a stress-free, well-planned birthday celebration for their child.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">No account, no friction</h3>
+          <p style="color:#9a9aaa;">No forced registration. Start the 7-step wizard and get your complete plan in minutes.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">80+ curated party games</h3>
+          <p style="color:#9a9aaa;">Age-appropriate games with step-by-step instructions, matched to theme and indoor/outdoor setting.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Complete in one plan</h3>
+          <p style="color:#9a9aaa;">Schedule, food, cake, shopping list with quantities, invitation as PDF and WhatsApp image – all generated automatically.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Shareable and flexible</h3>
+          <p style="color:#9a9aaa;">Share via link, export as PDF, or send the invitation via WhatsApp. Adjust the plan at any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funktionen" class="py-24 section-alt">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Core features that reduce planning stress</h2>
+        <p class="reveal text-lg max-w-[680px] mx-auto" style="color:var(--color-muted);">All key features from the Geburtstagspilot briefing in one clean, everyday-ready interface.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">7-Step Party Wizard</h3>
+          <p style="color:var(--color-muted);">Age, guests, venue, theme, duration, allergies and budget in 7 easy steps – then the plan is ready.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">80+ curated games</h3>
+          <p style="color:var(--color-muted);">Step-by-step game instructions, matched to age, theme and indoor/outdoor situation.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Invitation &amp; shopping list</h3>
+          <p style="color:var(--color-muted);">Print-ready invitation as PDF + WhatsApp image. Shopping list with quantities calculated from guest count.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">AI features (Pro)</h3>
+          <p style="color:var(--color-muted);">Chat assistant, personalized game generation and invitation texts for the perfect kids' birthday.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="process" style="background:#090a0e;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">Core Process in One Animated Flow</h2>
+        <p class="reveal text-lg max-w-[760px] mx-auto" style="color:#a2a2ab;">Geburtstagspilot turns birthday stress into a clear, shareable complete plan. This visual flow shows what parents do and what they get.</p>
+      </div>
+      <div class="reveal process-shell" id="processFlow">
+        <div class="process-track">
+          <div class="process-track__bar" id="processFlowBar"></div>
+          <div class="process-track__dot" id="processFlowDot"></div>
+        </div>
+        <div class="process-grid">
+          <article class="process-step process-step--active" tabindex="0">
+            <div class="process-step__index">01</div>
+            <h3 class="process-step__title">Start the wizard</h3>
+            <p class="process-step__text">Enter age, guest count, venue and theme. No login required.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">Parents start without registration and immediately receive a personalized complete party plan.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">02</div>
+            <h3 class="process-step__title">Receive complete plan</h3>
+            <p class="process-step__text">Schedule, 5 games with instructions, food, shopping list – all automatically generated.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">8 tabs cover all details: tasks, games, food &amp; cake, shopping list, invitation, party favors and more.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">03</div>
+            <h3 class="process-step__title">Customize &amp; refine</h3>
+            <p class="process-step__text">Swap games, adjust start time, check budget – the plan is flexible.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">With drag-and-drop ordering and allergy notes, the plan adapts perfectly to every child.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">04</div>
+            <h3 class="process-step__title">Share &amp; enjoy the party</h3>
+            <p class="process-step__text">Share plan via link, send invitation on WhatsApp, print shopping list as PDF.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">Result: A structured, relaxed 3-hour celebration without planning stress.</div>
+          </article>
+        </div>
+        <p class="process-target"><strong>Outcome:</strong> More planning confidence, less stress, and a complete Geburtstagspilot plan for the whole family.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" style="background:#0f1117;" id="ablauf">
+    <div class="max-w-[1000px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">How it works in 3 steps</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#8B5CF6;">Step 1</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Fill in the wizard</h3>
+          <p style="color:#9a9aaa;">Enter age, guest count, theme and more in 7 steps. Takes less than 5 minutes.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#8B5CF6;">Step 2</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Receive complete plan</h3>
+          <p style="color:#9a9aaa;">8 tabs with everything: schedule, games, food &amp; cake, shopping list, invitation, party favors and more.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#8B5CF6;">Step 3</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Enjoy the party</h3>
+          <p style="color:#9a9aaa;">Share plan, send invitation, tick off the shopping list – and enjoy the celebration stress-free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24" id="faq">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Frequently asked questions</h2>
+      </div>
+      <div id="faqList" class="rounded-2xl bg-white border overflow-hidden">
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Do I need to create an account?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">No. Core features work without login.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Which age groups are supported?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Children aged 3 to 12. The wizard adapts games and schedule to the exact age.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Can I share my party plan?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Yes, via a public share link or by exporting as a PDF and sending via WhatsApp.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Is there a paid Pro version?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Yes. Free: 3 saved plans. Pro: unlimited plans plus AI features (chat assistant, game generator, invitation texts).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="final-cta" style="background:#050508;">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10 text-center">
+      <h2 class="reveal text-3xl md:text-5xl font-black leading-[1.1] mb-5" style="color:#f0f0f2;">Plan your child's birthday party now.</h2>
+      <p class="reveal text-lg max-w-[620px] mx-auto mb-9" style="color:#9a9aaa;">Free, without an account, and done in under 5 minutes.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://kinderpartyplaner.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;background:#7C3AED;color:#fff;font-weight:700;border-radius:12px;text-decoration:none;">Start planning for free</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#050508;color:#8e8e93;padding:32px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,.08);">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <img src="app-icon-light.svg" alt="Geburtstagspilot" style="width:18px;height:18px;opacity:.85;">
+      <span style="font-weight:700;color:#f0f0f2;">Geburtstagspilot</span>
+    </div>
+    <p style="font-size:.9rem;">Your complete kids' birthday in 5 minutes.</p>
+    <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.85rem;">
+      <a href="https://kinderpartyplaner.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#A78BFA;text-decoration:none;">Open app</a>
+      <a href="impressum.html" style="color:#A78BFA;text-decoration:none;">Imprint</a>
+      <a href="agb.html" style="color:#A78BFA;text-decoration:none;">Terms</a>
+      <a href="datenschutz.html" style="color:#A78BFA;text-decoration:none;">Privacy</a>
+    </div>
+    <div style="margin-top:16px;">
+      <img src="made-in-germany-sign.svg" alt="Developed in Germany" style="width:72px;opacity:.7;">
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <div class="cookie-banner__inner">
+      <h3 style="font-weight:700;font-size:1.05rem;margin-bottom:.45rem;">Cookie and local storage notice</h3>
+      <p style="font-size:.92rem;line-height:1.6;color:#4d4d55;">Geburtstagspilot uses local browser storage to keep your party plan available. No ad trackers are used. All planning data stays on your device.</p>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap;">
+        <button class="cookie-banner__btn cookie-banner__btn--reject" data-cookie-action="reject">Close</button>
+        <button class="cookie-banner__btn cookie-banner__btn--accept" data-cookie-action="accept">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
